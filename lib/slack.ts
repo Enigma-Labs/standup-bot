@@ -55,22 +55,10 @@ export async function postAsDraft(channelId: string, text: string): Promise<void
   const userToken = process.env.SLACK_USER_TOKEN;
   if (!userToken) throw new Error("SLACK_USER_TOKEN is not set");
 
-  // In draft mode, DM the message to yourself for review
-  // Get the bot's own user ID first
-  const authResponse = await fetch("https://slack.com/api/auth.test", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-      "Content-Type": "application/json",
-    },
-  });
-  const authData = (await authResponse.json()) as { ok: boolean; user_id: string };
-  if (!authData.ok) throw new Error("Slack auth.test failed");
-
   await slackPost(
     "chat.postMessage",
     {
-      channel: authData.user_id,
+      channel: "U07BMSG0L86",
       text: "👀 *Draft for #product — review and copy to channel:*\n\n" + text,
       unfurl_links: false,
     },
