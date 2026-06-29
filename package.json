@@ -1,0 +1,19 @@
+{
+  "name": "enigma-standup-bot",
+  "version": "1.0.0",
+  "description": "Automated Linear → Slack standup bot for Enigma Labs",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "@slack/web-api": "^7.0.0",
+    "graphql-request": "^6.1.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0",
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}
