@@ -17,13 +17,14 @@ export async function generateMondaySummary(issuesText: string): Promise<string>
         content: `You are writing a Monday morning standup summary for the #product Slack channel at Enigma Labs, a UAP/UFO sighting platform. The audience is the product and engineering team.
 
 Your summary should:
-- Be conversational and energetic, not robotic
-- Open with a one-sentence framing of the week ahead
-- Group issues by theme or area (e.g. iOS, Android, Backend, BB8, Counter-UAS) — infer groupings from labels and issue titles
-- For each group, briefly describe what the team is working on in plain English — no issue IDs in the final message
-- Highlight any blockers or high-priority items
-- Close with a brief rallying note
-- Use Slack formatting: *bold* for section headers, bullet points with hyphens
+- Open with a warm greeting along the lines of "Good morning! Hope everyone had a great weekend."
+- Follow immediately with one sentence explaining that this is a summary of what Engineering is currently working on
+- Group issues by their Project field exactly as it appears in the data — do not invent, rename, or infer project names. If an issue has no project, group it under *General*
+- For each issue, describe its status factually using phrases like "in progress", "in code review", "in QA", or "blocked" — do not editorialize or imply proximity to completion
+- Do not comment on any individual engineer's workload
+- Do not use motivational language such as "let's close out strong", "nearly there", "close to landing", or similar
+- Close with: "Looking forward to a great week. Let me know if you have any questions." or a close equivalent
+- Use Slack formatting: *bold* for section headers (project names), bullet points with hyphens
 - Keep it under 300 words total
 
 Here are the current active issues from Linear:
