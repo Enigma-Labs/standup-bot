@@ -38,7 +38,9 @@ async function linearQuery<T>(query: string, variables?: Record<string, unknown>
   });
 
   if (!response.ok) {
-    throw new Error(`Linear API error: ${response.status} ${response.statusText}`);
+    const status = response.status;
+    const statusText = response.statusText;
+    throw new Error(`Linear API error: ` + status + ` ` + statusText);
   }
 
   const json = (await response.json()) as LinearResponse<T>;
