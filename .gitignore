@@ -3,3 +3,4 @@ dist/
 .env
 .vercel
 *.js.map
+.DS_Store
