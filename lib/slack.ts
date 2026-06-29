@@ -55,20 +55,29 @@ export async function postAsDraft(channelId: string, text: string): Promise<void
   const userToken = process.env.SLACK_USER_TOKEN;
   if (!userToken) throw new Error("SLACK_USER_TOKEN is not set");
 
-  // Schedule 23 hours from now — gives you a full day to review/cancel/send early
-  const postAt = Math.floor(Date.now() / 1000) + 23 * 60 * 60;
+  // In draft mode, DM the message to yourself for review
+  // Get the bot's own user ID first
+  const authResponse = await fetch("https://slack.com/api/auth.test", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const authData = (await authResponse.json()) as { ok: boolean; user_id: string };
+  if (!authData.ok) throw new Error("Slack auth.test failed");
 
   await slackPost(
-    "chat.scheduleMessage",
+    "chat.postMessage",
     {
-      channel: channelId,
-      text,
-      post_at: postAt,
+      channel: authData.user_id,
+      text: "👀 *Draft for #product — review and copy to channel:*\n\n" + text,
+      unfurl_links: false,
     },
     userToken
   );
 
-  console.log(`Draft scheduled in channel ${channelId} — review in Slack and send or cancel.`);
+  console.log("Draft sent to your Slack DMs for review.");
 }
 
 // ─── Auto-send Mode (Phase 2) ─────────────────────────────────────────────────
