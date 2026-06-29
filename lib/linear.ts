@@ -45,7 +45,7 @@ const ACTIVE_ISSUES_QUERY = `
   query {
     team(id: "` + process.env.LINEAR_TEAM_ID + `") {
       name
-      issues(filter: { state: { type: { in: ["started", "inProgress", "inReview"] } } }, orderBy: priority) {
+      issues(filter: { state: { type: { in: ["started", "inProgress", "inReview"] } } }, orderBy: updatedAt) {
         nodes {
           id
           title
