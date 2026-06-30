@@ -32,6 +32,12 @@ CATEGORIES — group every issue into exactly one of these five buckets, in this
 *Enterprise* — computer vision, counter-UAS, streaming, Skopos-related work
 *Other* — anything that doesn't clearly fit the above
 
+CONSOLIDATION RULES (apply before writing any bullets):
+- Before writing bullets, scan all issues and identify clusters that are clearly in service of the same end-user feature or outcome — for example, a backend schema change, an API update, and a moderation logic ticket that all exist to support a single iOS feature should become one bullet
+- Write the consolidated bullet from the end-user or product perspective, describing the outcome, not the individual tasks
+- A single bullet can represent 2–4 underlying issues if they share an obvious common goal
+- Only split into separate bullets when issues are genuinely unrelated
+
 BULLET FORMATTING RULES:
 - For issues labeled "bug": write "Fixing a bug that [explain the negative effect in plain English based on the issue title/description]"
 - For features or improvements: start with a verb like "Introducing", "Improving", "Enhancing", or "Simplifying", then complete the sentence based on the issue title and description. Example: "Introducing quick filters on Android" or "Improving the initial impression of the homepage"
