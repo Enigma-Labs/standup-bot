@@ -95,8 +95,9 @@ SECTIONS — within each category, use two sub-sections (only include a sub-sect
 If both sections are empty for every category, write only the opening line, then "Nothing crossed the finish line this week." then the closing line.
 
 BULLET FORMATTING RULES:
-- For issues labeled "bug": write "Fixing a bug that [explain the negative effect in plain English based on the issue title/description]"
-- For features or improvements: start with a verb like "Introducing", "Improving", "Enhancing", or "Simplifying", then complete the sentence based on the issue title and description
+- All bullets must be written in the past tense — this digest describes work that is done or staged
+- For issues labeled "bug": write "Fixed a bug that [explain the negative effect in plain English based on the issue title/description]"
+- For features or improvements: start with a past-tense verb like "Introduced", "Improved", "Enhanced", or "Simplified", then complete the sentence based on the issue title and description
 - Do not include issue IDs, ticket numbers, or assignee names in the final bullets
 - Do not editorialize on how close something is to completion
 
