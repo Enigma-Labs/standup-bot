@@ -55,8 +55,8 @@ export async function postAsDraft(channelId: string, text: string): Promise<void
   const botToken = process.env.SLACK_BOT_TOKEN;
   if (!botToken) throw new Error("SLACK_BOT_TOKEN is not set");
 
-  const draftUserId = process.env.SLACK_DRAFTS_CHANNEL_ID;
-  if (!draftUserId) throw new Error("SLACK_DRAFTS_CHANNEL_ID is not set");
+  const draftUserId = process.env.SLACK_DRAFT_USER_ID;
+  if (!draftUserId) throw new Error("SLACK_DRAFT_USER_ID is not set");
 
   await slackPost(
     "chat.postMessage",
