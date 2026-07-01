@@ -85,10 +85,10 @@ export async function getReleasedIssues(since: Date): Promise<ReleasedIssuesData
       team(id: "` + process.env.LINEAR_TEAM_ID + `") {
         name
         readyForRelease: issues(filter: { state: { name: { eq: "Ready for Release" } }, updatedAt: { gte: "` + sinceStr + `" } }, orderBy: updatedAt) {
-          nodes { id title identifier priority priorityLabel assignee { name } labels { nodes { name } } updatedAt }
+          nodes { id title identifier priority priorityLabel state { name type } assignee { name } labels { nodes { name } } updatedAt }
         }
         released: issues(filter: { state: { name: { eq: "Released" } }, updatedAt: { gte: "` + sinceStr + `" } }, orderBy: updatedAt) {
-          nodes { id title identifier priority priorityLabel assignee { name } labels { nodes { name } } updatedAt }
+          nodes { id title identifier priority priorityLabel state { name type } assignee { name } labels { nodes { name } } updatedAt }
         }
       }
     }
