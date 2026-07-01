@@ -52,17 +52,20 @@ async function slackPost(
 // Alternative: set DRAFT_MODE=false and use auto-send once you're happy with output.
 
 export async function postAsDraft(channelId: string, text: string): Promise<void> {
-  const userToken = process.env.SLACK_USER_TOKEN;
-  if (!userToken) throw new Error("SLACK_USER_TOKEN is not set");
+  const botToken = process.env.SLACK_BOT_TOKEN;
+  if (!botToken) throw new Error("SLACK_BOT_TOKEN is not set");
+
+  const draftUserId = process.env.SLACK_DRAFT_USER_ID;
+  if (!draftUserId) throw new Error("SLACK_DRAFT_USER_ID is not set");
 
   await slackPost(
     "chat.postMessage",
     {
-      channel: "U07BMSG0L86",
+      channel: draftUserId,
       text: "👀 *Draft for #product — review and copy to channel:*\n\n" + text,
       unfurl_links: false,
     },
-    userToken
+    botToken
   );
 
   console.log("Draft sent to your Slack DMs for review.");
